@@ -31,7 +31,7 @@ namespace Book
             get => author;
             init
             {
-                if (!string.IsNullOrWhiteSpace(value) && !value.Any(c => char.IsDigit(c)) &&
+                if (!string.IsNullOrWhiteSpace(value) && !value.All(c => char.IsDigit(c)) &&
                      value.Any(c => char.IsLetter(c)))
                 {
                     author = value;
@@ -43,7 +43,7 @@ namespace Book
         public int YearPublished
         {
             get => yearPublished;
-            init => yearPublished = value >= 1900 ? value : default;
+            init => yearPublished = value >= 1900 ? value : 1900;
         }
         public bool IsAvailable { get => isAvailable; private set => isAvailable = value; }
 
